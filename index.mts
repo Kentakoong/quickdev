@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import addProfiles from "./menus/add.mjs";
 import loadProfiles from "./menus/load.mjs";
 import settings from "./menus/settings.mjs";
