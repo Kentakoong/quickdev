@@ -1,5 +1,13 @@
 # QuickDev
 
+## Installation
+
+Using npm:
+
+```bash
+npm install -g quickdev
+```
+
 ## Features
 
 ### Add Projects
