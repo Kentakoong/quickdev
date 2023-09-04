@@ -4,8 +4,13 @@
   "description": "Quickly launch your development environment",
   "type": "module",
   "exports": "./index.js",
+  "main": "dist/index.mjs",
   "scripts": {
+    "build": "tsc",
     "start": "ts-node index.mts"
+  },
+  "bin": {
+    "qsdev": "./dist/index.mjs"
   },
   "keywords": [],
   "author": "",
