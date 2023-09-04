@@ -1,0 +1,30 @@
+{
+  "name": "startdev",
+  "version": "1.0.0",
+  "description": "Quickly launch your development environment",
+  "type": "module",
+  "exports": "./index.js",
+  "scripts": {
+    "start": "ts-node index.mts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/uuid": "^9.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@inquirer/input": "^1.2.9",
+    "@inquirer/select": "^1.2.9",
+    "chalk": "^5.3.0",
+    "open": "^9.1.0",
+    "open-uri": "^0.4.3",
+    "run-applescript": "^6.1.0",
+    "ts-node": "^10.9.1",
+    "uuid": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
