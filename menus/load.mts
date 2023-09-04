@@ -63,19 +63,18 @@ export default async function loadProfiles(selection: string) {
     const start = `"${cd}\ 
 ${packageManagerStart}"`;
 
-    if (process.platform != "darwin") {
-      exec(`code ${selectedWorkspace.projectPath}`);
-
-      await execWaitForOutput(start);
-    } else {
-      var defaultTerminal: string;
-      try {
-        defaultTerminal = getSavedData().settings.defaultTerminal;
-      } catch (error) {
-        defaultTerminal = "Terminal";
-      }
-      if (defaultTerminal == "Warp") {
-        await runAppleScript(`
+    if (selectedWorkspace.scripts) {
+      if (process.platform != "darwin") {
+        await execWaitForOutput(start);
+      } else {
+        var defaultTerminal: string;
+        try {
+          defaultTerminal = getSavedData().settings.defaultTerminal;
+        } catch (error) {
+          defaultTerminal = "Terminal";
+        }
+        if (defaultTerminal == "Warp") {
+          await runAppleScript(`
           tell application "Warp" to activate
             tell application "System Events"
             tell process "Warp"
@@ -96,8 +95,8 @@ ${packageManagerStart}"`;
             end tell
           end tell
         `);
-      } else if (defaultTerminal == "iTerm") {
-        await runAppleScript(`
+        } else if (defaultTerminal == "iTerm") {
+          await runAppleScript(`
           if application "iTerm" is running then
             tell application "iTerm"
               set newWindow to (create window with default profile)
@@ -121,15 +120,16 @@ ${packageManagerStart}"`;
             end tell
           end if
           `);
-      } else {
-        await runAppleScript(`
+        } else {
+          await runAppleScript(`
           tell application "Terminal"
             do script ${start}
             activate
           end tell
           `);
+        }
       }
-      exec(`code ${selectedWorkspace.projectPath}`);
     }
+    exec(`code ${selectedWorkspace.projectPath}`);
   }
 }
