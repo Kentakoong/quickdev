@@ -87,9 +87,9 @@ ${packageManagerStart}"`;
                 keystroke "${cd}"
                 delay 1
                 key code 36
-                delay 0.5
+                delay 1
                 keystroke "${packageManagerStart}"
-                delay 0.5
+                delay 1
                 key code 36
               end tell
             end tell
