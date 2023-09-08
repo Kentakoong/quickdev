@@ -1,6 +1,6 @@
 {
   "name": "qsdev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Quickly launch your development environment",
   "type": "module",
   "exports": "./index.js",
