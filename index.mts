@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import addProfiles from "./menus/add.mjs";
+import configure from "./menus/configure.mjs";
 import loadProfiles from "./menus/load.mjs";
 import settings from "./menus/settings.mjs";
 import callMenuPane from "./utils/callMenuPane.mjs";
@@ -22,6 +23,10 @@ async function main() {
         );
         main();
       });
+  } else if (selection == "configure") {
+    configure().then(() => {
+      main();
+    });
   } else if (selection == "settings") {
     settings().then(() => {
       main();

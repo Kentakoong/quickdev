@@ -4,13 +4,26 @@ import getSavedData from "./getSavedData.mjs";
 export default async function callMenuPane() {
   const savedData = getSavedData();
 
+  function checkIfWorkspaceExists() {
+    if (savedData.savedData.length > 0) {
+      return [
+        {
+          name: "Configure Existing Workspaces",
+          value: "configure",
+        },
+      ];
+    }
+    return [];
+  }
+
   const selection = await select({
     message: "Select a package manager",
     choices: [
       {
-        name: "Add New Workspace",
+        name: "Add a New Workspace",
         value: "add",
       },
+      ...checkIfWorkspaceExists(),
       {
         name: "Settings",
         value: "settings",
