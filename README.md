@@ -8,6 +8,13 @@ Using npm:
 npm install -g quickdev
 ```
 
+## Usage
+
+```bash
+quickdev
+```
+
+
 ## Features
 
 ### Add Projects

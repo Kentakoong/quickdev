@@ -70,7 +70,9 @@ export default async function loadProfiles(selection: string) {
     const checkPM = await packageManager();
 
     if (selectedWorkspace.packageManager !== checkPM) {
+      console.log("Package Manager Changed! - Updating Package Manager");
       selectedWorkspace.packageManager = checkPM;
+      fs.writeFileSync(savedFileDir, JSON.stringify(savedData));
     }
 
     if (!isModulesInstalled) {

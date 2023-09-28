@@ -1,6 +1,6 @@
 {
   "name": "qsdev",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Quickly launch your development environment",
   "type": "module",
   "exports": "./index.js",
@@ -10,7 +10,7 @@
     "start": "ts-node index.mts"
   },
   "bin": {
-    "qsdev": "./dist/index.mjs"
+    "quickdev": "./dist/index.mjs"
   },
   "keywords": [],
   "author": "",
