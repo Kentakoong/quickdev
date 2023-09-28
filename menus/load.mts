@@ -6,6 +6,7 @@ import { savedFileDir } from "../paths/config.mjs";
 import checkDirectory from "../utils/checkDirectory.mjs";
 import { execWaitForOutput } from "../utils/execWaitForOutput.mjs";
 import getSavedData from "../utils/getSavedData.mjs";
+import input from "@inquirer/input";
 
 export default async function loadProfiles(selection: string) {
   const savedData = getSavedData();
@@ -40,6 +41,37 @@ export default async function loadProfiles(selection: string) {
       `${selectedWorkspace.projectPath}/node_modules`,
       "dir"
     );
+
+    const packageManager = async () => {
+      if (checkDirectory(`${selectedWorkspace.projectPath}/yarn.lock`, "file"))
+        return "yarn";
+      else if (
+        checkDirectory(
+          `${selectedWorkspace.projectPath}/pnpm-lock.yaml`,
+          "file"
+        )
+      )
+        return "pnpm";
+      else if (
+        checkDirectory(
+          `${selectedWorkspace.projectPath}/package-lock.json`,
+          "file"
+        )
+      )
+        return "npm";
+      else {
+        const customPackageManager = await input({
+          message: "Enter your Package Manager Name",
+        });
+        return customPackageManager.toLowerCase();
+      }
+    };
+
+    const checkPM = await packageManager();
+
+    if (selectedWorkspace.packageManager !== checkPM) {
+      selectedWorkspace.packageManager = checkPM;
+    }
 
     if (!isModulesInstalled) {
       console.log(
