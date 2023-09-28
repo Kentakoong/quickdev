@@ -5,7 +5,7 @@
 Using npm:
 
 ```bash
-npm install -g quickdev
+npm install -g qsdev
 ```
 
 ## Usage
