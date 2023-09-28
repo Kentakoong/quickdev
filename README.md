@@ -11,7 +11,7 @@ npm install -g quickdev
 ## Usage
 
 ```bash
-quickdev
+qsdev
 ```
 
 
